@@ -1,20 +1,264 @@
-ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  
-  li {
-    margin: 0 0 8px 0;
-    padding: 10px;
-    background-color: #f0f0f0;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-  }
-  
-  
-  .dragging {
-    background-color: #d3d3d3; 
-  }
-  
+.todo-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  text-align: center;
+}
+
+.search-bar {
+  margin-bottom: 20px;
+}
+
+.add-task-button {
+  display: block;
+  width:  98.5%;
+  margin: 10px auto;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.manage-categories-button {
+  display: block;
+  margin-top: 5;
+  top: 20;
+  font-size: 10px;
+  padding: 1px 7px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.filters {
+  margin: 20px 0;
+}
+
+.filter-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.filter-table td {
+  padding: 5px;
+}
+
+.filter-labels,
+.filter-fields {
+  padding: 10px;
+}
+
+.filter-labels {
+  text-align: left;
+  vertical-align: top;
+  font-weight: bold;
+}
+
+.filter-fields {
+  text-align: left;
+  vertical-align: top;
+}
+
+.filter-labels label {
+  display: inline-block;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.filter-fields input,
+.filter-fields select {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.filter-fields input[type="text"] {
+  padding: 5px;
+}
+
+.filter-fields select {
+  padding: 5px;
+}
+
+.task-low {
+  background-color: #d4edda; /* Light green */
+}
+
+.task-medium {
+  background-color: #ffeeba; /* Light orange */
+}
+
+.task-high {
+  background-color: #f8d7da; /* Light red */
+}
+
+.task-item {
+  padding: 10px;
+  margin: 5px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+
+.task-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  background-color: #f9f9f9;
+  font-size: 14px;
+}
+
+.task-content {
+  display: grid;
+  grid-template-columns: 20px 1fr 100px 120px 120px auto;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.task-description,
+.task-priority,
+.task-date,
+.task-category {
+  /* Ensure text alignment and spacing */
+  text-align: left;
+}
+
+.task-priority {
+  text-align: center;
+}
+
+.task-date {
+  text-align: center;
+}
+
+.task-category {
+  text-align: center;
+}
+
+.delete-task-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: #ff0000;
+}
+
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  z-index: 1000; /* Ensure it's above other elements */
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  max-width: 500px;
+  width: 100%;
+  z-index: 1001; /* Ensure it's above the overlay */
+}
+
+
+.modal-content form div {
+  margin-bottom: 10px;
+}
+
+.modal-content button {
+  display: block;
+  margin: 10px auto;
+  padding: 10px 20px;
+  width: 100%;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.form-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.form-table td {
+  padding: 5px;
+  vertical-align: middle; /* Aligns the content vertically in the middle */
+}
+
+.form-label {
+  text-align: left;
+  font-weight: bold;
+  padding-right: 10px; /* Adds space between label and field */
+}
+
+.form-field {
+  text-align: left;
+}
+
+.form-label label {
+  display: block; /* Ensures labels use the full width */
+}
+
+.form-field input,
+.form-field select {
+  width: 100%;
+  box-sizing: border-box; /* Ensures padding and border are included in the width */
+}
+
+.form-field input[type="text"] {
+  padding: 5px;
+}
+
+.form-field select {
+  padding: 5px;
+}
+
+.category-table, .category-list-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.category-table td, .category-list-table th, .category-list-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.category-list-table th {
+  background-color: #f4f4f4;
+  text-align: left;
+}
+
+.category-list-table button {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.category-list-table button:hover {
+  background-color: #cc0000;
+}
+
+.category-table td, .category-list-table td {
+  vertical-align: middle;
+}

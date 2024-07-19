@@ -1,50 +1,67 @@
 import React from 'react';
 import { useDrag, useDrop } from 'react-dnd';
+import { FaTrash } from 'react-icons/fa'; 
+import { Timestamp } from 'firebase/firestore';
 
-const ItemType = 'TASK';
+//Manages color for the different priority tasks
+const getPriorityColor = (priority) => {
+  switch (priority) {
+    case 'Low':
+      return 'lightgreen';
+    case 'Medium':
+      return 'lightgoldenrodyellow'; 
+    case 'High':
+      return 'lightcoral';
+    default:
+      return 'white';
+  }
+};
 
-const DraggableTask = ({ task, index, moveTask }) => {
-  const ref = React.useRef(null);
+// DraggableTask component
+const DraggableTask = ({ task, index, moveTask, toggleTaskDone, handleDeleteTask }) => {
+  const [, ref] = useDrag({
+    type: 'TASK',
+    item: { index },
+  });
 
   const [, drop] = useDrop({
-    accept: ItemType,
-    hover(item, monitor) {
-      if (!ref.current) {
-        return;
+    accept: 'TASK',
+    hover: (draggedItem) => {
+      if (draggedItem.index !== index) {
+        moveTask(draggedItem.index, index);
+        draggedItem.index = index;
       }
-      const dragIndex = item.index;
-      const hoverIndex = index;
-      if (dragIndex === hoverIndex) {
-        return;
-      }
-      const hoverBoundingRect = ref.current?.getBoundingClientRect();
-      const hoverMiddleY = (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2;
-      const clientOffset = monitor.getClientOffset();
-      const hoverClientY = clientOffset.y - hoverBoundingRect.top;
-      if (dragIndex < hoverIndex && hoverClientY < hoverMiddleY) {
-        return;
-      }
-      if (dragIndex > hoverIndex && hoverClientY > hoverMiddleY) {
-        return;
-      }
-      moveTask(dragIndex, hoverIndex);
-      item.index = hoverIndex;
     },
   });
 
-  const [{ isDragging }, drag] = useDrag({
-    type: ItemType,
-    item: { type: ItemType, index },
-    collect: (monitor) => ({
-      isDragging: monitor.isDragging(),
-    }),
-  });
-
-  drag(drop(ref));
+  const taskDate = task.date instanceof Timestamp ? task.date.toDate() : new Date(task.date);
 
   return (
-    <li ref={ref} style={{ opacity: isDragging ? 0.5 : 1 }}>
-      <strong>Description:</strong> {task.description} | <strong>Category:</strong> {task.category} | <strong>Deadline:</strong> {task.date.toLocaleDateString()}
+    <li 
+      ref={(node) => ref(drop(node))} 
+      className="task-item" 
+      style={{ 
+        textDecoration: task.done ? 'line-through' : 'none', 
+        backgroundColor: getPriorityColor(task.priority) 
+      }}
+    >
+      <div className="task-content">
+        <input
+          type="checkbox"
+          checked={task.done}
+          onChange={() => toggleTaskDone(task.id)} 
+        />
+        <span className="task-description">{task.description}</span>
+        <span className="task-priority">{task.priority}</span>
+        <span className="task-date">{taskDate.toDateString()}</span>
+        <span className="task-category">{task.category}</span>
+        <button 
+          className="delete-task-button" 
+          onClick={() => handleDeleteTask(task.id)} // Pass task.id to handleDeleteTask
+        >
+          <FaTrash />
+        </button>
+      </div>
     </li>
   );
 };

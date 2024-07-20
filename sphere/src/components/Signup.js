@@ -30,6 +30,7 @@ const Signup = () => {
   return (
     <div className="align">
       <div className="grid">
+      <h2>SIGN UP</h2>
         <form onSubmit={handleSignup} className="form login">
           <div className="form__field">
             <label htmlFor="signup__email">

@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
+
+:root{
+  --dark-blue: #030311;
+  --medium-blue: #6368A6;
+  --light-blue: #D1D6F6;
+  --medium-orange: #fed15a;
+
+}
+
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem;
+  font-family: 'Josefin Sans', sans-serif;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+input {
+  color: white;
+  background-color: #03031100;
+  padding: 1rem 1.3rem;
+  border: .1 solid white;
+  border-radius: 2rem;
+  font-size: 1.4rem;
+}
+
+
+main {
+  display: flex;
+  width: 50rem;
+  height: fit-content;
+  background: rgba(20,20,60, .6);
+  border-radius: 30px;
+  padding: 3rem;
+  filter: drop-shadow(2px 3px 5px #333);
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  color: #f8f8f8;
+  font-size: 2rem;
+}
+
+.white-icon {
+  color: #f8f8f8;
+  cursor: pointer;
+  transition: all .2s ease;
+}
+
+.white-icon:hover {
+  color: medium-orange;
+}
+
+.forecast-title {
+  color: #f8f8f8;
+  margin-top: 2rem;
+}
+
+.card {
+  padding: 3rem;
+  background: rgba(255,255,255, .05);
+  border-radius: 20px;
+  margin-top: 4rem;
+  color: #f8f8f8;
+}
+
+.card-date {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.day {
+  font-size: 2rem;
+}
+
+.date {
+  font-size: 1.2rem;
+}
+
+.location {
+  display: flex;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.place {
+  text-align: center;
+}
+
+.weather {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.status {
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.temp {
+  display: flex;
+}
+
+.value {
+  font-size: 6rem;
+}
+
+.unit {
+  font-size: 3rem;
+  color: --medium-orange;
+}
+
+.weather-img img{
+  display: flex;
+  align-items: center;
+  height: 100px;
+  width: auto;
+}
+
+.orange-icon {
+  color: --medium-orange;
+  font-size: 1.6rem;
+}
+
+.week-wrapper {
+  margin-top: 2rem;
+  overflow: auto;
+  white-space: nowrap;
+  display: flex;
+}
+
+.hourly-card  {
+  height: 200px;
+  min-width: 200px;
+  background: red;
+  border-radius: 10px;
+  padding: 3rem;
+  background: rgba(255,255,255, .05);
+  border-radius: 20px;
+  display: flex;
+  margin-right: 1rem;
+  color: #f8f8f8;
+}
+
+.hourly-card:last-child {
+  margin-right: 0rem;
+}

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebase/firebase';
 import './Login.css';
@@ -7,13 +8,19 @@ const Signup = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [success, setSuccess] = useState(false);
+  const navigate = useNavigate();
 
   // Signup functionality
   const handleSignup = async (e) => {
     e.preventDefault();
+    setError(''); // Reset previous errors
     try {
       await createUserWithEmailAndPassword(auth, email, password);
-      console.log('Signup successful');
+      setSuccess(true); // Show success message
+      setTimeout(() => {
+        navigate('/login'); // Redirect to login page after 2 seconds
+      }, 2000);
     } catch (error) {
       console.error('Error signing up:', error.message);
       setError(error.message);
@@ -23,6 +30,7 @@ const Signup = () => {
   return (
     <div className="align">
       <div className="grid">
+      <h2>SIGN UP</h2>
         <form onSubmit={handleSignup} className="form login">
           <div className="form__field">
             <label htmlFor="signup__email">
@@ -66,6 +74,7 @@ const Signup = () => {
         </form>
 
         {error && <p className="text--center error">{error}</p>}
+        {success && <p className="text--center success">Signup successful! Redirecting to login...</p>}
         <p className="text--center">
           Already a member? <a href="/login">Login here</a>
           <svg className="icon">

@@ -1,4 +1,3 @@
-// src/components/Login.js
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { signInWithEmailAndPassword } from 'firebase/auth';
@@ -12,7 +11,7 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  //Login authentication functionality
+  // Login authentication functionality
   const handleSubmit = async (event) => {
     event.preventDefault();
     setError(''); // Reset previous errors
@@ -33,10 +32,16 @@ const Login = () => {
       setLoading(false); // Hide loading spinner or feedback
     }
   };
-  
+
+  // Handle sign up navigation
+  const handleSignUpClick = () => {
+    navigate('/signup'); // Redirect to the signup page
+  };
+
   return (
     <div className="align">
       <div className="grid">
+        <h2>LOGIN</h2>
         <form onSubmit={handleSubmit} className="form login">
           <div className="form__field">
             <label htmlFor="login__email">
@@ -82,7 +87,7 @@ const Login = () => {
 
         {error && <p className="text--center error">{error}</p>}
         <p className="text--center">
-          Not a member? <a href="#">Sign up now</a>
+          Not a member? <a href="#" onClick={handleSignUpClick}>Sign up now</a>
           <svg className="icon">
             <use xlinkHref="#icon-arrow-right" />
           </svg>

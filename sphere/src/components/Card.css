@@ -1,0 +1,56 @@
+/* CommonCard.css */
+
+.card {
+    height: 50vh;
+    width: 200px;
+    background-color: rgba(6, 13, 104, 0.303);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(1, 0, 23, 0.1);
+    padding: 5rem;
+    margin: 20px;
+    text-align: center;
+    backdrop-filter: blur(5px);;
+}
+
+.card-header {
+    width:40rem;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.card-body {
+    font-size: 1.2em;
+}
+
+.card-footer {
+    font-size: 1em;
+    margin-top: 10px;
+    color: #666;
+}
+
+.input-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    flex-direction: column;
+    align-items: center;
+}
+
+input[type="text"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 300px;
+    text-align: center;
+}
+
+input[type="number"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 300px;
+    text-align: center;
+}

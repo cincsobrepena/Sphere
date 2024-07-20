@@ -108,7 +108,7 @@ main {
 }
 
 .place {
-  margin-left: 1rem;
+  text-align: center;
 }
 
 .weather {
@@ -116,6 +116,11 @@ main {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.status {
+  font-size: 1.2rem;
+  text-align: center;
 }
 
 .temp {
@@ -132,6 +137,8 @@ main {
 }
 
 .weather-img img{
+  display: flex;
+  align-items: center;
   height: 100px;
   width: auto;
 }

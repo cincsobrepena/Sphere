@@ -194,7 +194,7 @@
   }
   
   .login input[type="submit"] {
-    background-color: var(--loginSubmitBackgroundColor);
+    background-color: rgba(6, 13, 104);
     color: var(--loginSubmitColor);
     font-weight: 700;
     text-transform: uppercase;
@@ -205,6 +205,9 @@
     background-color: var(--loginSubmitHoverBackgroundColor);
   }
   
+  h2 {
+    text-align: center;
+  }
   
   p {
     margin-block: 1.5rem;

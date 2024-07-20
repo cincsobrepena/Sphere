@@ -1,12 +1,11 @@
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import PlayButton from './PlayButton';
 import PauseButton from './PauseButton';
 import SettingsButton from './SettingsButton';
 import SettingsContext from './SettingsContext';
-import './Countdown.css';
-import { useContext, useEffect, useRef, useState } from 'react';
+import '../Card.css';
 
 const Countdown = () => {
-
     const settingsInfo = useContext(SettingsContext);
 
     const [isPaused, setIsPaused] = useState(true);
@@ -23,64 +22,54 @@ const Countdown = () => {
     }
 
     useEffect(() => {
-
-        //Switches the timer between Work Mode & Break Mode
         function switchMode() {
             const nextMode = modeRef.current === 'work' ? 'break' : 'work';
             const nextSeconds = (nextMode === 'work' ? settingsInfo.workMinutes : settingsInfo.breakMinutes) * 60;
-      
+
             setMode(nextMode);
             modeRef.current = nextMode;
-      
+
             setSecondsLeft(nextSeconds);
             secondsLeftRef.current = nextSeconds;
-
         }
-      
+
         secondsLeftRef.current = settingsInfo.workMinutes * 60;
         setSecondsLeft(secondsLeftRef.current);
-    
+
         const interval = setInterval(() => {
-        if (isPausedRef.current) {
-            return;
-        }
-        if (secondsLeftRef.current === 0) {
-            return switchMode();
-        }
-    
-        tick();
-        },1000);
-    
+            if (isPausedRef.current) {
+                return;
+            }
+            if (secondsLeftRef.current === 0) {
+                return switchMode();
+            }
+
+            tick();
+        }, 1000);
+
         return () => clearInterval(interval);
     }, [settingsInfo]);
 
-    //Converts Seconds to Minutes
     const minutes = Math.floor(secondsLeft / 60);
     let seconds = secondsLeft % 60;
-    if(seconds < 10) seconds = '0'+seconds;
+    if (seconds < 10) seconds = '0' + seconds;
 
-    return(
-        <>
-            <div>
-                {/*Displays Current Mode */}
-                <h2> {mode} </h2>
-
-                {/*Displays Clock */}
-                <h1> {minutes + ':' + seconds} </h1>
-
-                {/* Chooses which button to display*/}
-                <div style={{marginTop:'20px'}}>
+    return (
+        <div className="card">
+            <div className="card-header">Pomodoro Timer</div>
+            <div className="card-body">
+                <h2>{mode}</h2>
+                <h1>{minutes}:{seconds}</h1>
+                <div style={{ marginTop: '20px' }}>
                     {isPaused
-                    ? <PlayButton onClick={() => { setIsPaused(false); isPausedRef.current = false; }} />
-                    : <PauseButton onClick={() => { setIsPaused(true); isPausedRef.current = true; }} />}
+                        ? <PlayButton onClick={() => { setIsPaused(false); isPausedRef.current = false; }} />
+                        : <PauseButton onClick={() => { setIsPaused(true); isPausedRef.current = true; }} />}
                 </div>
-
-                {/*Button for diplaying Setttings*/}
-                <div style={{marginTop:'20px'}}>
+                <div style={{ marginTop: '20px' }}>
                     <SettingsButton onClick={() => settingsInfo.setShowSettings(true)} />
                 </div>
             </div>
-        </>
+        </div>
     );
 }
 

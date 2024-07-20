@@ -18,7 +18,7 @@ h1 {
   width:  98.5%;
   margin: 10px auto;
   padding: 10px 20px;
-  background-color: #007bff;
+  background-color: rgba(6, 13, 104);
   color: white;
   border: none;
   border-radius: 5px;
@@ -54,6 +54,7 @@ h1 {
 .filter-labels,
 .filter-fields {
   padding: 10px;
+
 }
 
 .filter-labels {
@@ -65,6 +66,7 @@ h1 {
 .filter-fields {
   text-align: left;
   vertical-align: top;
+  color: #121416;
 }
 
 .filter-labels label {
@@ -87,16 +89,20 @@ h1 {
   padding: 5px;
 }
 
+.filter-fields select option{
+  color: #121416;
+}
+
 .task-low {
-  background-color: #d4edda; /* Light green */
+  background-color: #106524; /* Light green */
 }
 
 .task-medium {
-  background-color: #ffeeba; /* Light orange */
+  background-color: #cdab46; /* Light orange */
 }
 
 .task-high {
-  background-color: #f8d7da; /* Light red */
+  background-color: #e43a48; /* Light red */
 }
 
 .task-item {
@@ -168,10 +174,10 @@ h1 {
 }
 
 .modal-content {
-  background-color: white;
-  padding: 20px;
+  background-color: rgb(6, 120, 158);
+  padding: 30px;
   border-radius: 5px;
-  max-width: 500px;
+  max-width: 600px;
   width: 100%;
   z-index: 1001; /* Ensure it's above the overlay */
 }
@@ -185,8 +191,8 @@ h1 {
   display: block;
   margin: 10px auto;
   padding: 10px 20px;
-  width: 100%;
-  background-color: #007bff;
+  width: 50%;
+  background-color: #0c4d92;
   color: white;
   border: none;
   border-radius: 5px;
@@ -227,8 +233,10 @@ h1 {
   padding: 5px;
 }
 
-.form-field select {
+.form-field select,
+.form-field select option {
   padding: 5px;
+  color: #121416;
 }
 
 .category-table, .category-list-table {

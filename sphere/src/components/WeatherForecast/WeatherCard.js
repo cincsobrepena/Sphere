@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { API_KEY } from '../../config/config';
 import './WeatherCard.css';
 import { format, parseISO } from 'date-fns'; // Import date-fns functions
+import '../Card.css';
 
 function WeatherCard() {
     const [city, setCity] = useState('');
@@ -30,20 +31,20 @@ function WeatherCard() {
     }, [city]);
 
     return (
-        <main>
-            <div className="nav">
-                    <input 
-                        type="text" 
-                        value={city}
-                        onChange={(e) => setCity(e.target.value)} 
-                        placeholder="Enter city" 
-                    />
-                <div className="title">Weather Forecast</div>
+        <div className="card">
+            <div className="input-container">
+                <input 
+                    type="text" 
+                    value={city}
+                    onChange={(e) => setCity(e.target.value)} 
+                    placeholder="Enter city" 
+                />
             </div>
+            <div className="card-header">Weather</div>
                 
             {error && <p>{error}</p>}
             {weather && (
-                <div className="card">
+                <div className="card-body">
                     <div className="card-date">
                         <div className="day">{weather.current.last_updated ? format(parseISO(weather.current.last_updated), 'EEEE') : 'N/A'}</div>
                         <div className="date">{weather.current.last_updated ? format(parseISO(weather.current.last_updated), 'MMM d, yyyy') : 'N/A'}</div>
@@ -57,14 +58,15 @@ function WeatherCard() {
                         </div>
                         <div className="weather-img">
                             <img src={`http://${weather.current.condition.icon}`} alt={weather.current.condition.text} />
+                            <span className="status">{weather.current.condition.text}</span>
                         </div>
                     </div>
                     <div className="location">
-                        <i className="material-icons orange-icon"></i><span className="place">{weather.location.name}, {weather.location.country}</span>
+                        <span className="place">{weather.location.name}, {weather.location.country}</span>
                     </div>
                 </div>
             )}
-        </main>
+        </div>
     );
 }
 

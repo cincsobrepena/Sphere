@@ -230,7 +230,6 @@ const ToDoList = () => {
       <div className="todo-container">
         <h1>To-Do List</h1>
 
-        <button onClick={handleLogout} className="logout-button">Logout</button>
 
         {showAddTaskModal && (
           <div className="modal">
@@ -367,8 +366,9 @@ const ToDoList = () => {
                 </td>
               </tr>
               <tr>
-                <td className="filter-fields">
+                <td className="filter-fields" style={{ color: '#3b4148' }}>
                   <select
+                  style={{ color: '#3b4148' }}
                     id="doneFilter"
                     value={doneFilter}
                     onChange={handleDoneFilterChange}
@@ -386,8 +386,9 @@ const ToDoList = () => {
                     onChange={handleDescriptionFilterChange}
                   />
                 </td>
-                <td className="filter-fields">
+                <td className="filter-fields" style={{ color: '#3b4148' }}>
                   <select
+                    style={{ color: '#3b4148' }}
                     id="priorityFilter"
                     value={priorityFilter}
                     onChange={handlePriorityFilterChange}
@@ -398,7 +399,7 @@ const ToDoList = () => {
                     <option value="High">High</option>
                   </select>
                 </td>
-                <td className="filter-fields">
+                <td className="filter-fields" >
                   <input
                     id="dateFilter"
                     type="date"
@@ -407,8 +408,11 @@ const ToDoList = () => {
                     onChange={handleDateFilterChange}
                   />
                 </td>
-                <td className="filter-fields">
+                <td className="filter-fields"
+                    style={{ color: '#3b4148' }}>
                   <select
+                  
+                  style={{ color: '#3b4148' }}
                     id="categoryFilter"
                     value={categoryFilter}
                     onChange={handleCategoryFilterChange}

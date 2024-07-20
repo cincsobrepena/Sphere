@@ -18,7 +18,7 @@ h1 {
   width:  98.5%;
   margin: 10px auto;
   padding: 10px 20px;
-  background-color: rgba(6, 13, 104);
+  background-color: rgba(6, 13, 104, 0.303);
   color: white;
   border: none;
   border-radius: 5px;
@@ -31,7 +31,7 @@ h1 {
   top: 20;
   font-size: 10px;
   padding: 1px 7px;
-  background-color: #28a745;
+  background-color: rgba(6, 13, 104, 0.303);
   color: white;
   border: none;
   border-radius: 5px;
@@ -125,19 +125,55 @@ h1 {
 }
 
 .task-content {
-  display: grid;
-  grid-template-columns: 20px 1fr 100px 120px 120px auto;
+  display: flex;
   align-items: center;
-  gap: 10px;
-  width: 100%;
+  width: 100%; /* Ensure the task-content takes the full width of its container */
 }
 
-.task-description,
-.task-priority,
-.task-date,
-.task-category {
-  /* Ensure text alignment and spacing */
-  text-align: left;
+.task-content input[type="checkbox"] {
+  flex: 0 0 30px; /* Fixed width for the checkbox */
+}
+
+.task-content .task-description {
+  flex: 3; /* Make the description span take more space */
+  text-align: center; 
+  overflow: hidden; 
+  text-overflow: ellipsis; 
+  white-space: nowrap;
+  color: #3b4148;
+}
+
+.task-content .task-priority {
+  flex: 1; /* Priority takes less space */
+  text-align: center;
+  overflow: hidden; 
+  text-overflow: ellipsis; 
+  white-space: nowrap;
+  color: #3b4148;
+}
+
+.task-content .task-date {
+  flex: 2; /* Make the date span take more space */
+  text-align: center; 
+  overflow: hidden; 
+  text-overflow: ellipsis; 
+  white-space: nowrap;
+  color: #3b4148;
+}
+
+.task-content .task-category {
+  flex: 1; /* Category takes less space */
+  text-align: center; 
+  overflow: hidden; 
+  text-overflow: ellipsis; 
+  white-space: nowrap;
+  color: #3b4148;
+}
+
+.task-content .delete-task-button {
+  flex: 0 0 30px; /* Fixed width for the delete button */
+  color: #3b4148;
+  fill: #3b4148;
 }
 
 .task-priority {

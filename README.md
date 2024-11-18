@@ -2,7 +2,9 @@
 Stay Focused, Organized, and Informed.
 
 This is an application done for the subject - CS ELECTIVE 3 - Hybrid Programming (React/Ruby on Rails)
+
 By: Carl Sobrepeña and Edward Tatel
+
 Made With React JS
 
 # App Description

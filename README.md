@@ -33,7 +33,7 @@ You can learn how to use the application using this user manual: https://docs.go
 
 # Application Video Demo
 This is a screen recorded demo explaining how the app works, and how it was made.
-[![Video Title](https://github.com/user-attachments/assets/f97be514-4437-4955-a49b-a3c18eb3ccc6)]([https://youtu.be/EiVM4sHmRJM?si=VizTjV2RSNYH-cnq](https://drive.google.com/file/d/1K9puVZ0301kaSKQ6GCJ63wiBf4arutdV/view?usp=sharing))
+[![Video Title](https://github.com/user-attachments/assets/f97be514-4437-4955-a49b-a3c18eb3ccc6)](https://drive.google.com/file/d/1K9puVZ0301kaSKQ6GCJ63wiBf4arutdV/view?usp=sharing)
 
 # Screenshots
 Signup Page
